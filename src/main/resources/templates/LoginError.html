@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>Login page</h1>
-	<h2>Your username or password was wrong</h2>
+	<h2>Your username or password is wrong</h2>
 	<form th:action="@{/Login}" th:method="get" th:object="${loginRequest}">
 		<label>username</label><input type="text" th:field="*{username}" /><br>
 		<label>password</label><input type="password" th:field="*{password}" /><br>

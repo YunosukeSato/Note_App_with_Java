@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Main page</h1>
+	<h1>Main page</h1>
+	<form th:action="@{/createNote}" th:method="post" th:object="${noteRequest}">
+		<label>Title</label><br>
+		<input type="text" th:field="*{title}"><br>
+		<label>Memo</label><br>
+		<input type="text" size="50" th:field="*{contents}"><br>
+		<input type="submit" value="Add">
+	</form>
+		<form th:action="@{/updateNote}" th:method="post" th:object="${noteRequest}">
+		<label>Title</label><br>
+		<input type="text" th:field="*{title}"><br>
+		<label>Memo</label><br>
+		<input type="text" size="50" th:field="*{contents}"><br>
+		<input type="submit" value="Edit">
+	</form>
+	<form th:action="@{/deleteNote}" th:object="${noteRequest}" th:method="post">
+		<label>Title</label><br>
+		<input type="text" th:field="*{title}" /><br>
+		<input type="submit" value="Delete"></input>
+	</form>
+	<form th:action="@{/signOut}" th:method="get">
+		<input type="submit" value="Back">
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="note : ${noteList}">
+				<td th:text="*{note.title}"></td>
+				<td th:text="*{note.contents}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+
 </body>
 </html>
