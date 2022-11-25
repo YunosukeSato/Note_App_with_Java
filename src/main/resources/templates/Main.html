@@ -3,46 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="Main.css">
 </head>
 <body>
-	<h1>Main page</h1>
-	<form th:action="@{/createNote}" th:method="post" th:object="${noteRequest}">
-		<label>Title</label><br>
-		<input type="text" th:field="*{title}"><br>
-		<label>Memo</label><br>
-		<input type="text" size="50" th:field="*{contents}"><br>
-		<input type="submit" value="Add">
-	</form>
-		<form th:action="@{/updateNote}" th:method="post" th:object="${noteRequest}">
-		<label>Title</label><br>
-		<input type="text" th:field="*{title}"><br>
-		<label>Memo</label><br>
-		<input type="text" size="50" th:field="*{contents}"><br>
-		<input type="submit" value="Edit">
-	</form>
-	<form th:action="@{/deleteNote}" th:object="${noteRequest}" th:method="post">
-		<label>Title</label><br>
-		<input type="text" th:field="*{title}" /><br>
-		<input type="submit" value="Delete"></input>
-	</form>
-	<form th:action="@{/signOut}" th:method="get">
-		<input type="submit" value="Back">
-	</form>
-	<table>
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Content</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="note : ${noteList}">
-				<td th:text="*{note.title}"></td>
-				<td th:text="*{note.contents}"></td>
-			</tr>
-		</tbody>
-	</table>
-	
-
+	<div id="container">
+		<div id="header"><h1>Memotter</h1></div>
+		<div id="side">
+			<form th:action="@{/createNote}" th:method="post" th:object="${noteRequest}">
+				<label>Title</label><br>
+				<input type="text" th:field="*{title}"><br>
+				<label>Memo</label><br>
+				<!-- <input type="text" th:field="*{contents}"><br> -->
+				<textarea name="name" class="m-form-textarea" th:field="*{contents}"></textarea>
+				<button class="btn">Add</button>
+			</form>
+			<form th:action="@{/updateNote}" th:method="post" th:object="${noteRequest}">
+				<label>Title</label><br>
+				<input type="text" th:field="*{title}"><br>
+				<label>Memo</label><br>
+				<textarea name="name" class="m-form-textarea" th:field="*{contents}"></textarea>
+				<button class="btn">Edit</button>
+			</form>
+			<form th:action="@{/deleteNote}" th:object="${noteRequest}" th:method="post">
+				<label>Title</label><br>
+				<input type="text" th:field="*{title}" /><br>
+				<button class="btn">Delete</button>
+			</form>
+			<br>
+			<button class="btn">Sign out</button>
+		</div>
+		<div id="main">
+			<table>
+				<thead>
+					<tr class="tr">
+						<th width="100px">Title</th>
+						<th>Content</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="note : ${noteList}">
+						<td th:text="*{note.title}"></td>
+						<td th:text="*{note.contents}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="footer">
+			<h5>Visit my github account: <a target="_blank" href="https://github.com/YunosukeSato">GitHub</a></h5>
+		</div>
+	</div>
 </body>
 </html>

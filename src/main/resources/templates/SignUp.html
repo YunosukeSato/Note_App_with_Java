@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="Login.css">
 </head>
 <body>
-	<h1>Sign up page</h1>
+<!-- 	<h1>Sign up page</h1>
 	<form th:action="@{/SignUp}" th:object="${signUpRequest}" th:method="post">
 	<label>username</label>
 	<input type="text" th:field="*{username}"><br>
@@ -15,6 +16,16 @@
 	</form>
 	<form th:action="@{/}" th:method="get">
 	<input type="submit" value="Back">
-	</form>
+	</form> -->
+<form class="Login" th:action="@{/SignUp}" th:method="post" th:object="${signUpRequest}">
+  <h1>Memotter</h1>
+  <input placeholder="Username" type="text" th:field="*{username}"/>
+  <input placeholder="Password" type="password" th:field="*{password}"/>
+  <!-- <input class="btn1" type="submit" value="Log in"> -->
+  <button class="btn">Sign up</button>
+</form>
+<form class="Back" th:action="@{/}" th:method="get">
+  <button class="backBtn">Back</button>
+</form>
 </body>
 </html>

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="Login.css">
 </head>
 <body>
-<h1>Empty error page</h1>
+	<h2>Please enter Username and Password</h2>
+	<form class="Login" th:action="@{/Login}" th:method="get" th:object="${loginRequest}">
+	  <h1>Memotter</h1>
+	  <input placeholder="Username" type="text" th:field="*{username}"/>
+	  <input placeholder="Password" type="password" th:field="*{password}"/>
+	  <!-- <input class="btn1" type="submit" value="Log in"> -->
+	  <button class="btn">Log in</button>
+	</form>
+	<form class="SignUp" th:action="@{/moveSignUp}" th:method="get">
+	  <button class="btn2">Sign up</button>
+	</form>
+	
+	<footer>
+  <h5>Visit my github account: <a target="_blank" href="https://github.com/YunosukeSato">GitHub</a></h5>
+</footer>
 </body>
 </html>
