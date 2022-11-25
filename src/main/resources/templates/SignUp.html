@@ -6,17 +6,6 @@
 <link rel="stylesheet" href="Login.css">
 </head>
 <body>
-<!-- 	<h1>Sign up page</h1>
-	<form th:action="@{/SignUp}" th:object="${signUpRequest}" th:method="post">
-	<label>username</label>
-	<input type="text" th:field="*{username}"><br>
-	<label>password</label>
-	<input type="password" th:field=*{password}><br>
-	<input type="submit" value="SignUp">
-	</form>
-	<form th:action="@{/}" th:method="get">
-	<input type="submit" value="Back">
-	</form> -->
 <form class="Login" th:action="@{/SignUp}" th:method="post" th:object="${signUpRequest}">
   <h1>Memotter</h1>
   <input placeholder="Username" type="text" th:field="*{username}"/>

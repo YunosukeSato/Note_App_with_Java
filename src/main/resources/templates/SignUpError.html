@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sign up error</title>
+<link rel="stylesheet" href="Login.css">
 </head>
 <body>
-	<h1>Sign up error happened</h1>
-	<p>Your username or password was empty, or the username was already used. Try different username.</p>
-	<form th:action="@{/SignUp}" th:object="${signUpRequest}" th:method="post">
-		<label>username</label>
-		<input type="text" th:field="*{username}"><br>
-		<label>password</label>
-		<input type="password" th:field=*{password}><br>
-		<input type="submit" value="SignUp">
-	</form>
-	<form th:action="@{/}" th:method="get">
-		<input type="submit" value="Back">
-	</form>
+<h2>Sign up error occured</h2>
+<form class="Login" th:action="@{/SignUp}" th:method="post" th:object="${signUpRequest}">
+  <h1>Memotter</h1>
+  <input placeholder="Username" type="text" th:field="*{username}"/>
+  <input placeholder="Password" type="password" th:field="*{password}"/>
+  <!-- <input class="btn1" type="submit" value="Log in"> -->
+  <button class="btn">Sign up</button>
+</form>
+<form class="Back" th:action="@{/}" th:method="get">
+  <button class="backBtn">Back</button>
+</form>
 </body>
 </html>
