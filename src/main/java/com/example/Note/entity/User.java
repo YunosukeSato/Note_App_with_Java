@@ -24,4 +24,19 @@ public class User {
 	
 	@Column(name = "password")
 	private String pass;
+	
+	
+	public String noteListQuery(User user) {
+
+		String query = "SELECT title, contents FROM notes_tbl WHERE userid = " + user.id;
+		
+		return query;
+	}
+	
+	public String createNoteQuery(String title, String contents, User user) {
+		
+		String query = "INSERT INTO notes_tbl (title, contents, userid) VALUES ('" + title + "', '" + contents + "', " + user.id + ")";
+		
+		return query;
+	}
 }

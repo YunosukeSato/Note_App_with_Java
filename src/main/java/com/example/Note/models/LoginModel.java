@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Service;
 
 import com.example.Note.dbUtil.dbConnection;
+import com.example.Note.entity.User;
 
 
 @Service
@@ -28,11 +29,11 @@ public class LoginModel {
 	}
 	
 //	method to Login
-	public boolean isLogin(String username, String password) {
+	public User isLogin(String username, String password) {
 		PreparedStatement statement = null;
 		ResultSet result = null;
 		
-		String query = "SELECT * FROM user_tbl WHERE username = ? AND password = ?";
+		String query = "SELECT id, username, password FROM user_tbl WHERE username = ? AND password = ?";
 		
 		try {
 			statement = this.conn.prepareStatement(query);
@@ -42,10 +43,21 @@ public class LoginModel {
 			
 			result = statement.executeQuery();
 			
-			return result.next();
+			if(result.next()) {
+				User user = new User();
+				
+				user.setId(result.getInt(1));
+				user.setName(result.getString(2));
+				user.setPass(result.getString(3));
+				
+				return user;
+			}
+			
+			return null;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		} finally {
 			try {
 				statement.close();
