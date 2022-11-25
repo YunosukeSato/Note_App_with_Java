@@ -9,28 +9,29 @@
 	<div id="container">
 		<div id="header"><h1>Memotter</h1></div>
 		<div id="side">
-			<form th:action="@{/createNote}" th:method="post" th:object="${noteRequest}">
+			<form class="texts" th:action="@{/createNote}" th:method="post" th:object="${noteRequest}">
 				<label>Title</label><br>
 				<input type="text" th:field="*{title}"><br>
 				<label>Memo</label><br>
-				<!-- <input type="text" th:field="*{contents}"><br> -->
 				<textarea name="name" class="m-form-textarea" th:field="*{contents}"></textarea>
 				<button class="btn">Add</button>
 			</form>
-			<form th:action="@{/updateNote}" th:method="post" th:object="${noteRequest}">
+			<form class="texts" th:action="@{/updateNote}" th:method="post" th:object="${noteRequest}">
 				<label>Title</label><br>
 				<input type="text" th:field="*{title}"><br>
 				<label>Memo</label><br>
 				<textarea name="name" class="m-form-textarea" th:field="*{contents}"></textarea>
 				<button class="btn">Edit</button>
 			</form>
-			<form th:action="@{/deleteNote}" th:object="${noteRequest}" th:method="post">
+			<form class="texts" th:action="@{/deleteNote}" th:object="${noteRequest}" th:method="post">
 				<label>Title</label><br>
 				<input type="text" th:field="*{title}" /><br>
 				<button class="btn">Delete</button>
 			</form>
 			<br>
-			<button class="btn">Sign out</button>
+			<form class="Logout" th:action="@{/}" th:method="get">
+			<input type="submit" value="Log out">
+			</form>
 		</div>
 		<div id="main">
 			<table>
